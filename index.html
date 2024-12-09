@@ -15,12 +15,7 @@
 
     <nav>
         <h2>目录</h2>
-        <ul>
-            <li><a href="#section1">1. about me </a></li>
-            <li><a href="#section2">2. education background </a></li>
-            <li><a href="#section3">3. publication</a></li>
-            <li><a href="#section3">4. contact</a></li>
-        </ul>
+        <ul id="toc"></ul>
     </nav>
     
     <main>
@@ -47,6 +42,47 @@
             <p>email:yubobalabala</p>
         </section>
     </main>
+
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // 获取目录容器
+            const toc = document.getElementById("toc");
+
+            // 获取所有标题
+            const sections = document.querySelectorAll("section");
+
+            // 动态生成目录项
+            sections.forEach((section, index) => {
+                const id = section.id || `section${index + 1}`;
+                const title = section.querySelector("h2").innerText;
+
+                // 创建目录项
+                const li = document.createElement("li");
+                li.innerHTML = `<a href="#${id}">${title}</a>`;
+                toc.appendChild(li);
+            });
+
+            // 高亮当前章节
+            const links = document.querySelectorAll("nav ul li a");
+            window.addEventListener("scroll", () => {
+                let currentSection = null;
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100; // 提前高亮
+                    if (window.scrollY >= sectionTop) {
+                        currentSection = section.id;
+                    }
+                });
+
+                links.forEach(link => {
+                    link.parentElement.classList.remove("active");
+                    if (link.getAttribute("href").substring(1) === currentSection) {
+                        link.parentElement.classList.add("active");
+                    }
+                });
+            });
+        });
+    </script>
+    
     <footer>
         <p>it is me</p>
     </footer>
