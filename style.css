@@ -6,7 +6,46 @@ body {
     background-color: #F8AC8C;
     color: #9AC9DB;
 }
+nav {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-width: 200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin-bottom: 5px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #007bff;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        nav ul li.active a {
+            font-weight: bold;
+            color: #0056b3;
+        }
+        main {
+            margin-left: 230px;
+            padding: 20px;
+        }
+        section {
+            margin-bottom: 50px;
+        }
 
+body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
 header {
     background: #F09739;
     color: #D87659;
